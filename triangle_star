@@ -1,0 +1,72 @@
+Public Class Form6
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Dim baris As Integer
+        Dim jumlahbaris As Integer
+        Dim kolom As Integer
+        Dim bintang As String
+        Dim request As Integer
+        Dim sb As Integer
+        Dim a As Double
+        request = 0
+        baris = 0
+        kolom = 0
+        bintang = ""
+        a = 0
+        sb = 0
+        txtpiramid.Enabled = True
+        txtpiramid.Text = ""
+        If txt2.Text = "" Then
+            request = 0
+        Else
+            request = CInt(txt2.Text)
+        End If
+
+        sb = request Mod 2
+        a = request / 2
+        a = a + 0.5
+        'Label1.Text = a
+        If sb = 0 Then
+            Label1.Text = "Maaf Bilangan harus ganjil"
+        Else
+            Label1.Text = a
+            For jumlahbaris = 1 To request
+                If jumlahbaris <= a Then
+                    'For baris = 1 To a
+                    For kolom = 1 To jumlahbaris
+                        bintang = bintang + "* "
+                    Next
+                    bintang = bintang + vbNewLine
+                    'Next
+                Else
+                    If jumlahbaris = a + 1 Then
+                        baris = a - 1
+                    Else
+                        baris = baris - 1
+                    End If
+
+                    'While baris >= 1
+                    For kolom = 1 To baris
+                        bintang = bintang + "* "
+                    Next
+                    bintang = bintang + vbNewLine
+                        'End If
+
+                    End If
+            Next
+            txtpiramid.Text = bintang
+            txt2.Text = ""
+            txt2.Focus()
+            bintang = ""
+        End If
+
+    End Sub
+
+    Private Sub Form6_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Me.CenterToScreen()
+        txtpiramid.Enabled = False
+    End Sub
+
+    Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
+
+    End Sub
+End Class
